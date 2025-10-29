@@ -95,7 +95,7 @@ export default function FloatingWhatsApp() {
                 {quickActions.map((action, index) => (
                   <a
                     key={index}
-                    href={action.action || `${whatsappLink}&text=${encodeURIComponent(action.message)}`}
+                    href={action.action || (action.message ? `${whatsappLink}&text=${encodeURIComponent(action.message)}` : whatsappLink)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
