@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { getReviewsByTourId, calculateReviewStats } from '@/data/reviews'
-import { getTourBySlug } from '@/data/tours'
+import { tours, getTourBySlug } from '@/data/tours'
 import ReviewCard from './ReviewCard'
 import Button from './Button'
 import {

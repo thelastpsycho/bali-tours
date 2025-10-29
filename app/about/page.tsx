@@ -164,7 +164,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1543118397-9ebd69a06974?w=800&h=600&fit=crop&crop=entropy"
+                src="https://images.unsplash.com/photo-1711609110590-5ad5c4599e56?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071"
                 alt="Bali Temple"
                 fill
                 className="object-cover"

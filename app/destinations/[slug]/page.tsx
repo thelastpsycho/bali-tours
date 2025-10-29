@@ -28,9 +28,10 @@ export async function generateStaticParams() {
 export default async function DestinationPage({
   params
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const destination = getDestinationBySlug(params.slug)
+  const { slug } = await params
+  const destination = getDestinationBySlug(slug)
 
   if (!destination) {
     notFound()

@@ -19,7 +19,7 @@ export const vehicles: Vehicle[] = [
       'USB Charging',
       'Bottled Water'
     ],
-    image: 'https://images.unsplash.com/photo-1549399542-7e2467375061?q=80&w=1887&auto=format&fit=crop',
+    image: 'https://www.dsf.my/wp-content/uploads/2015/10/ExteriorDI-L_DI-5_1-110915.jpg',
     available: true,
     priceMultiplier: 1.0
   },
@@ -43,7 +43,7 @@ export const vehicles: Vehicle[] = [
       'More Legroom',
       'Premium Seats'
     ],
-    image: 'https://images.unsplash.com/photo-1542362567-b07e54358453?q=80&w=1887&auto=format&fit=crop',
+    image: 'https://radarbanyumas.disway.id/upload/085d54e6f94421216fb53bbbbf571038.jpg',
     available: true,
     priceMultiplier: 1.3
   },
@@ -68,7 +68,7 @@ export const vehicles: Vehicle[] = [
       'Luggage Space',
       'Premium Sound System'
     ],
-    image: 'https://images.unsplash.com/photo-1570125479572-45100baca32c?q=80&w=1887&auto=format&fit=crop',
+    image: 'https://toyotanigeria.com/wp-content/uploads/2018/11/Haice-scaled.jpg',
     available: true,
     priceMultiplier: 1.8
   },
@@ -94,7 +94,7 @@ export const vehicles: Vehicle[] = [
       'Premium Sound System',
       'Refrigerator'
     ],
-    image: 'https://images.unsplash.com/photo-1580273916550-e60bd42bf3bb?q=80&w=1887&auto=format&fit=crop',
+    image: 'https://2024toyota.net/wp-content/uploads/2023/02/2024-Toyota-Alphard-Exterior.jpg',
     available: true,
     priceMultiplier: 2.5
   }

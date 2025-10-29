@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getAllDestinations, getDestinationsByRegion } from '@/data/destinations'
 import DestinationCard from '@/components/shared/DestinationCard'
 import { Search, MapPin } from 'lucide-react'
@@ -20,16 +21,16 @@ export default function DestinationsPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6 text-slate-300">Explore Bali's Destinations</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+            <h1 className="text-5xl font-bold mb-6 text-white">Explore Bali's Destinations</h1>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
               Discover the most beautiful and culturally rich destinations across the Island of the Gods
             </p>
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Search destinations..."
-                className="w-full pl-10 pr-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-tours-primary-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-tours-primary-500 focus:border-transparent"
               />
             </div>
           </div>
@@ -45,7 +46,7 @@ export default function DestinationsPage() {
               <div key={region} className="mb-16">
                 <div className="flex items-center mb-8">
                   <MapPin className="h-6 w-6 text-tours-primary-600 mr-3" />
-                  <h2 className="text-3xl font-bold text-slate-900">{region}</h2>
+                  <h2 className="text-3xl font-bold text-tours-primary-950">{region}</h2>
                   <span className="ml-4 px-3 py-1 bg-tours-primary-100 text-tours-primary-700 rounded-full text-sm font-medium">
                     {regionDestinations.length} destination{regionDestinations.length > 1 ? 's' : ''}
                   </span>
@@ -94,6 +95,3 @@ export default function DestinationsPage() {
     </div>
   )
 }
-
-// Add missing import
-import Image from 'next/image'

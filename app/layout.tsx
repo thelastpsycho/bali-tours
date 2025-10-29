@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 import Script from "next/script";
 import StickyHeader from "@/components/layout/StickyHeader";
@@ -9,6 +10,8 @@ import {
   generateWebsiteStructuredData,
   generateLocalBusinessStructuredData,
 } from "@/lib/structured-data";
+import { SOCIAL_MEDIA, CONTACT_INFO } from "@/lib/constants";
+import { Facebook, Instagram, Youtube, Mail } from "lucide-react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +27,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://balitourstransportation.com'),
   title: "Bali Tours Transportation | Private Driver & Tour Packages",
   description: "Discover Bali with our professional private drivers and curated tour packages. Half-day and full-day tours to Ubud, Uluwatu, and hidden gems. Book your perfect Bali adventure.",
   keywords: ["bali tours", "bali private driver", "bali tour packages", "bali transportation", "ubud tour", "uluwatu tour", "bali day tours"],
@@ -99,10 +103,13 @@ export default function RootLayout({
         <footer className="relative bg-slate-900 text-white py-8">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop"
               alt="Bali landscape"
-              className="w-full h-full object-cover opacity-20"
+              fill
+              className="object-cover opacity-20"
+              priority={false}
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-slate-900"></div>
           </div>
@@ -150,6 +157,44 @@ export default function RootLayout({
                 <a href="/about" className="text-neutral-300 hover:text-white transition-colors">About</a>
                 <a href="/contact" className="text-neutral-300 hover:text-white transition-colors">Contact</a>
                 <a href="tel:+6281234567890" className="text-neutral-300 hover:text-white transition-colors">Call Us</a>
+              </div>
+
+              {/* Social Media Links */}
+              <div className="flex justify-center space-x-4 mt-6">
+                <a
+                  href={SOCIAL_MEDIA.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-400 hover:text-white transition-colors"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href={SOCIAL_MEDIA.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-400 hover:text-white transition-colors"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href={SOCIAL_MEDIA.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-400 hover:text-white transition-colors"
+                  aria-label="Subscribe to our YouTube channel"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="text-neutral-400 hover:text-white transition-colors"
+                  aria-label="Email us"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
               </div>
               <p className="text-neutral-400 mt-4 text-sm">© 2024 Bali Tours Transportation. All rights reserved.</p>
             </div>

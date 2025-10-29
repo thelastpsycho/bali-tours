@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { MessageCircle, Phone, X } from 'lucide-react'
 import { generateWhatsAppLink } from '@/lib/utils'
+import { CONTACT_INFO } from '@/lib/constants'
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,7 +39,7 @@ export default function FloatingWhatsApp() {
     },
     {
       label: 'Call Now',
-      action: 'tel:+6281234567890',
+      action: `tel:${CONTACT_INFO.phone}`,
       icon: '📞'
     }
   ]

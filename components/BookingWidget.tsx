@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone } from 'lucide-react'
+import { Phone, Calendar, Users } from 'lucide-react'
 import { Tour } from '@/types/tour'
 import Button from './shared/Button'
-import { formatCurrency, generateWhatsAppLink } from '@/lib/utils'
+import { formatCurrency, generateWhatsAppLink, generateWhatsAppLinkWithMessage } from '@/lib/utils'
+import { CONTACT_INFO } from '@/lib/constants'
 
 interface BookingWidgetProps {
   tour: Tour
@@ -13,62 +14,143 @@ interface BookingWidgetProps {
 export default function BookingWidget({ tour }: BookingWidgetProps) {
   const [selectedVehicle, setSelectedVehicle] = useState<keyof typeof tour.pricing>('smallCar')
   const [participants, setParticipants] = useState(2)
+  const [selectedDate, setSelectedDate] = useState('')
+  const [selectedTime, setSelectedTime] = useState('08:00')
+
+  // Get tomorrow's date as minimum
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  const minDate = tomorrow.toISOString().split('T')[0]
+
+  // Get max date (1 year from now)
+  const maxDate = new Date()
+  maxDate.setFullYear(maxDate.getFullYear() + 1)
+  const maxDateString = maxDate.toISOString().split('T')[0]
 
   const vehicleOptions = [
     {
-      key: 'smallCar',
+      key: 'smallCar' as const,
       label: 'Small Car',
       capacity: 'Up to 4 passengers',
       description: 'Toyota Avanza or similar',
-      icon: '🚗'
+      icon: '🚗',
+      multiplier: 1.0
     },
     {
-      key: 'mediumCar',
+      key: 'mediumCar' as const,
       label: 'Medium Car',
       capacity: 'Up to 6 passengers',
       description: 'Toyota Innova or similar',
-      icon: '🚙'
+      icon: '🚙',
+      multiplier: 1.3
     },
     {
-      key: 'largeVan',
+      key: 'largeVan' as const,
       label: 'Large Van',
       capacity: 'Up to 12 passengers',
       description: 'Toyota Hiace or similar',
-      icon: '🚐'
+      icon: '🚐',
+      multiplier: 1.8
     },
     {
-      key: 'luxury',
+      key: 'luxury' as const,
       label: 'Luxury Vehicle',
       capacity: 'Up to 4 passengers',
       description: 'Premium luxury car',
-      icon: '🏎️'
+      icon: '🏎️',
+      multiplier: 2.5
     }
+  ]
+
+  // Calculate total price based on vehicle and participants
+  const basePrice = tour.pricing[selectedVehicle] || 0
+  const vehicleMultiplier = vehicleOptions.find(v => v.key === selectedVehicle)?.multiplier || 1
+  const totalPrice = Math.round(basePrice * vehicleMultiplier)
+
+  const timeOptions = [
+    '08:00', '09:00', '10:00', '11:00', '12:00',
+    '13:00', '14:00', '15:00', '16:00', '17:00'
   ]
 
   const whatsappLink = generateWhatsAppLink({
     tourName: tour.name,
     vehicleType: vehicleOptions.find(v => v.key === selectedVehicle)?.label || '',
     passengers: participants,
-    date: new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+    date: selectedDate ? new Date(selectedDate).toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) : undefined
   })
 
-  const totalPrice = tour.pricing[selectedVehicle] || 0
+  const handleAskQuestion = () => {
+    const message = `Hi! I have a question about the ${tour.name} tour. Can you help me?`
+    const link = generateWhatsAppLinkWithMessage(message)
+    window.open(link, '_blank')
+  }
+
+  const handleBookNow = () => {
+    if (!selectedDate) {
+      alert('Please select a date for your tour.')
+      return
+    }
+    window.open(whatsappLink, '_blank')
+  }
 
   return (
-    <div className="bg-white rounded-2xl p-6 sticky top-8">
-      <h2 className="text-2xl font-display font-semibold mb-4">Book This Tour</h2>
+    <div className="bg-white rounded-2xl border border-tours-neutral-200 p-6 sticky top-8 shadow-elegant">
+      <h2 className="text-2xl font-display font-semibold text-tours-primary-950 mb-6">Book This Tour</h2>
+
+      {/* Date Selection */}
+      <div className="mb-6">
+        <label className="flex items-center gap-2 text-sm font-medium text-tours-primary-900 mb-2">
+          <Calendar className="w-4 h-4" />
+          Select Date
+        </label>
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          min={minDate}
+          max={maxDateString}
+          className="w-full px-4 py-3 border border-tours-neutral-300 rounded-lg bg-white text-tours-primary-900 focus:outline-none focus:ring-2 focus:ring-tours-primary-900 focus:border-transparent transition-colors"
+          required
+        />
+      </div>
+
+      {/* Time Selection */}
+      {selectedDate && (
+        <div className="mb-6">
+          <label className="flex items-center gap-2 text-sm font-medium text-tours-primary-900 mb-2">
+            <Calendar className="w-4 h-4" />
+            Preferred Time
+          </label>
+          <select
+            value={selectedTime}
+            onChange={(e) => setSelectedTime(e.target.value)}
+            className="w-full px-4 py-3 border border-tours-neutral-300 rounded-lg bg-white text-tours-primary-900 focus:outline-none focus:ring-2 focus:ring-tours-primary-900 focus:border-transparent transition-colors"
+          >
+            {timeOptions.map((time) => (
+              <option key={time} value={time}>
+                {time} ({time === '08:00' ? 'Morning Start' : time === '13:00' ? 'Afternoon Start' : 'Flexible Time'})
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Vehicle Selection */}
       <div className="mb-6">
-        <h3 className="font-semibold mb-3">Select Vehicle</h3>
+        <h3 className="font-semibold text-tours-primary-900 mb-3">Select Vehicle</h3>
         <div className="space-y-3">
           {vehicleOptions.map((vehicle) => (
             <label
               key={vehicle.key}
-              className={`relative block cursor-pointer rounded-lg border p-4 transition-all hover:shadow-md ${
+              className={`relative block cursor-pointer rounded-xl border p-4 transition-all duration-200 hover:shadow-md ${
                 selectedVehicle === vehicle.key
-                  ? 'border-tours-primary-900 bg-tours-primary-50'
-                  : 'border-tours-neutral-300'
+                  ? 'border-tours-primary-600 bg-tours-primary-50 shadow-sm'
+                  : 'border-tours-neutral-300 hover:border-tours-primary-400'
               }`}
             >
               <input
@@ -80,16 +162,24 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
                 className="sr-only"
               />
               <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <span className="text-2xl mr-3">{vehicle.icon}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{vehicle.icon}</span>
                   <div>
-                    <p className="font-semibold">{vehicle.label}</p>
+                    <p className="font-semibold text-tours-primary-900">{vehicle.label}</p>
                     <p className="text-sm text-tours-neutral-600">{vehicle.capacity}</p>
+                    <p className="text-xs text-tours-neutral-500">{vehicle.description}</p>
                   </div>
                 </div>
-                <p className="font-bold text-tours-primary-900">
-                  {formatCurrency(tour.pricing[vehicle.key as keyof typeof tour.pricing] || 0)}
-                </p>
+                <div className="text-right">
+                  <p className="font-bold text-tours-primary-900">
+                    {formatCurrency(totalPrice)}
+                  </p>
+                  {vehicle.multiplier > 1 && (
+                    <p className="text-xs text-tours-accent-600">
+                      {vehicle.multiplier}x multiplier
+                    </p>
+                  )}
+                </div>
               </div>
             </label>
           ))}
@@ -98,13 +188,14 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
 
       {/* Participants */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-tours-primary-900 mb-2">
+        <label className="flex items-center gap-2 text-sm font-medium text-tours-primary-900 mb-2">
+          <Users className="w-4 h-4" />
           Number of Participants
         </label>
         <select
           value={participants}
           onChange={(e) => setParticipants(Number(e.target.value))}
-          className="w-full px-4 py-3 border border-tours-neutral-300 rounded-lg bg-white text-tours-primary-900 focus:outline-none focus:ring-2 focus:ring-tours-primary-900 focus:border-transparent"
+          className="w-full px-4 py-3 border border-tours-neutral-300 rounded-lg bg-white text-tours-primary-900 focus:outline-none focus:ring-2 focus:ring-tours-primary-900 focus:border-transparent transition-colors"
         >
           {Array.from({ length: tour.maxParticipants }, (_, i) => i + 1).map((num) => (
             <option key={num} value={num}>
@@ -115,43 +206,61 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
       </div>
 
       {/* Price Summary */}
-      <div className="border-t border-tours-neutral-200 pt-4 mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-tours-neutral-600">Vehicle Price</span>
-          <span className="font-semibold">{formatCurrency(totalPrice)}</span>
+      <div className="border-t border-tours-neutral-200 pt-4 mb-6 space-y-3">
+        <div className="flex justify-between items-center">
+          <span className="text-tours-neutral-600">Base Price ({vehicleOptions.find(v => v.key === selectedVehicle)?.label})</span>
+          <span className="font-semibold">{formatCurrency(basePrice)}</span>
         </div>
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-tours-neutral-600">Duration</span>
-          <span className="font-semibold">{tour.durationHours} hours</span>
+        {vehicleMultiplier > 1 && (
+          <div className="flex justify-between items-center">
+            <span className="text-tours-neutral-600">Vehicle Surcharge ({vehicleMultiplier}x)</span>
+            <span className="font-semibold text-tours-accent-600">
+              +{formatCurrency(Math.round(basePrice * (vehicleMultiplier - 1)))}
+            </span>
+          </div>
+        )}
+        <div className="flex justify-between items-center text-sm text-tours-neutral-600">
+          <span>Duration</span>
+          <span>{tour.durationHours} hours</span>
         </div>
-        <div className="flex justify-between items-center text-lg font-bold text-tours-primary-900 pt-2 border-t border-tours-neutral-200">
-          <span>Total Price</span>
-          <span>{formatCurrency(totalPrice)}</span>
+        <div className="flex justify-between items-center pt-3 border-t border-tours-neutral-200">
+          <span className="text-lg font-bold text-tours-primary-900">Total Price</span>
+          <span className="text-2xl font-bold text-tours-primary-900">
+            {formatCurrency(totalPrice)}
+          </span>
         </div>
       </div>
 
       {/* CTA Buttons */}
       <div className="space-y-3">
-        <Button
-          as="a"
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="accent"
-          size="lg"
-          className="w-full"
+        <button
+          onClick={handleBookNow}
+          className="w-full bg-tours-accent-600 text-tours-primary-950 px-8 py-3.5 rounded-lg font-semibold transition-all duration-300 hover:bg-tours-accent-500 hover:shadow-elegant-md active:scale-[0.98] flex items-center justify-center gap-2"
         >
-          <Phone className="w-5 h-5 mr-2" />
+          <Phone className="w-5 h-5" />
           Book via WhatsApp
-        </Button>
-        <Button variant="secondary" size="lg" className="w-full">
+        </button>
+        <button
+          onClick={handleAskQuestion}
+          className="w-full bg-white text-tours-primary-900 border border-tours-neutral-300 px-8 py-3.5 rounded-lg font-medium transition-all duration-300 hover:border-tours-primary-900 hover:shadow-elegant active:scale-[0.98]"
+        >
           Ask a Question
-        </Button>
+        </button>
       </div>
 
-      <p className="text-xs text-tours-neutral-500 mt-4 text-center">
-        No upfront payment required. Pay on the day of the tour.
-      </p>
+      <div className="mt-6 p-4 bg-tours-neutral-50 rounded-xl">
+        <div className="flex items-start gap-3">
+          <div className="w-2 h-2 bg-tours-accent-500 rounded-full mt-2 flex-shrink-0"></div>
+          <div className="space-y-1">
+            <p className="text-sm font-medium text-tours-primary-900">
+              No upfront payment required
+            </p>
+            <p className="text-xs text-tours-neutral-600">
+              Pay on the day of the tour. Free cancellation up to 24 hours before.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

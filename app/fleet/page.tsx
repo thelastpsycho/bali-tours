@@ -214,7 +214,7 @@ export default function FleetPage() {
 
             <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="https://images.unsplash.com/photo-1549299514-2d719f5c7e17?w=800&h=600&fit=crop&crop=entropy"
+                src="https://plus.unsplash.com/premium_photo-1661306646017-c3f9293fdbd8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
                 alt="Professional Driver"
                 fill
                 className="object-cover"

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { CONTACT_INFO } from "./constants"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -35,7 +36,7 @@ export function generateWhatsAppLink(params: {
   passengers?: number
   vehicleType?: string
 }) {
-  const phoneNumber = '62XXXXXXXXX' // Replace with actual number
+  const phoneNumber = CONTACT_INFO.whatsapp
   const baseUrl = `https://wa.me/${phoneNumber}`
 
   let message = 'Hi, I would like to inquire about '
@@ -55,7 +56,7 @@ export function generateWhatsAppLink(params: {
 }
 
 export function generateWhatsAppLinkWithMessage(message: string) {
-  const phoneNumber = '62XXXXXXXXX' // Replace with actual number
+  const phoneNumber = CONTACT_INFO.whatsapp
   const baseUrl = `https://wa.me/${phoneNumber}`
   return `${baseUrl}?text=${encodeURIComponent(message)}`
 }

@@ -28,7 +28,7 @@ export default function Home() {
             <Button as={Link} href="/tours" variant="accent" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30">
               Explore Our Tours
             </Button>
-            <Button as={Link} href="/contact" variant="secondary" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30 bg-white/10 backdrop-blur-sm">
+            <Button as={Link} href="/contact" variant="secondary" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white">
               Get in Touch
             </Button>
           </div>

@@ -60,16 +60,20 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
             </div>
           </div>
 
-          {destination.tours.length > 0 && (
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-neutral-500">
-                {destination.tours.length} tour{destination.tours.length > 1 ? 's' : ''} available
-              </span>
+          <div className="flex items-center justify-between">
+              {destination.tours.length > 0 ? (
+                <span className="text-sm text-neutral-500">
+                  {destination.tours.length} tour{destination.tours.length > 1 ? 's' : ''} available
+                </span>
+              ) : (
+                <span className="text-sm text-neutral-500">
+                  Explore destination
+                </span>
+              )}
               <span className="text-tours-primary-600 font-medium text-sm group-hover:text-tours-primary-700">
                 Explore →
               </span>
             </div>
-          )}
         </div>
       </div>
     </Link>

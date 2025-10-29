@@ -9,7 +9,7 @@ export const destinations: Destination[] = [
     longDescription: `Ubud is Bali's cultural and spiritual center, nestled in the heart of the island among lush rainforests and emerald rice terraces. This enchanting town has been a center for fine arts, dance, and music for over a century. From the sacred Monkey Forest Sanctuary to the majestic Tegalalang Rice Terraces, Ubud offers a perfect blend of natural beauty and cultural richness.
 
 The area is famous for its traditional crafts, including silver jewelry, wood carving, and textile making. Visitors can explore ancient temples, participate in yoga and meditation retreats, or indulge in world-class spa treatments. The vibrant local market offers everything from fresh produce to handcrafted souvenirs.`,
-    image: 'https://images.unsplash.com/photo-1543118397-9ebd69a06974?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://plus.unsplash.com/premium_photo-1669317566483-d3327adeda10?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2231',
     gallery: [
       'https://images.unsplash.com/photo-1543118397-9ebd69a06974?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&h=800&fit=crop&crop=entropy',
@@ -46,7 +46,7 @@ The area is famous for its traditional crafts, including silver jewelry, wood ca
         lng: 115.2625,
       },
     },
-    tours: ['ubud-cultural-heritage', 'ubud-rice-terraces-adventure'],
+    tours: ['ubud-cultural-tour'],
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: '2024-01-01T00:00:00Z',
   },
@@ -60,7 +60,7 @@ The area is famous for its traditional crafts, including silver jewelry, wood ca
 The crown jewel is the ancient Uluwatu Temple, one of Bali's six key directional temples, perched precariously on a cliff edge 70 meters above sea level. The area is also renowned for its world-class surf breaks, including the legendary Uluwatu surf spot that attracts surfers from around the globe.
 
 In the evenings, visitors can witness the captivating Kecak dance performances at the temple, with the sunset providing a breathtaking backdrop. The nearby Padang Padang beach, featured in the movie "Eat Pray Love," offers pristine white sand and crystal-clear waters.`,
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://images.unsplash.com/photo-1588625224664-a561c1f5f619?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1674',
     gallery: [
       'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=entropy',
@@ -97,7 +97,7 @@ In the evenings, visitors can witness the captivating Kecak dance performances a
         lng: 115.1050,
       },
     },
-    tours: ['uluwatu-temple-sunset'],
+    tours: ['uluwatu-sunset-tour'],
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: '2024-01-01T00:00:00Z',
   },
@@ -111,9 +111,9 @@ In the evenings, visitors can witness the captivating Kecak dance performances a
 The wide, sandy beach is perfect for swimming, surfing, and sunbathing, with professional instructors available for surf lessons of all levels. As the sun sets, the beach transforms into a social hub with beach clubs like Ku De Ta and Potato Head Beach Club offering sunset views with cocktails.
 
 Seminyak's dining scene is exceptional, with restaurants ranging from local warungs to Michelin-starred establishments. The area is also famous for its spa culture, offering everything from traditional Balinese massages to cutting-edge wellness treatments.`,
-    image: 'https://images.unsplash.com/photo-1539609415589-f9542e1e9837?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://images.unsplash.com/photo-1571984405176-5958bd9ac31d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2232',
     gallery: [
-      'https://images.unsplash.com/photo-1539609415589-f9542e1e9837?w=1200&h=800&fit=crop&crop=entropy',
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1579734978777-4c7064d28432?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1590490359683-cc32121a221c?w=1200&h=800&fit=crop&crop=entropy',
@@ -162,10 +162,10 @@ Seminyak's dining scene is exceptional, with restaurants ranging from local waru
 The coastline offers excellent surf breaks for all levels, from beginner-friendly waves at Batu Bolong to challenging reef breaks. Inland, rice paddies provide a picturesque backdrop for yoga studios, co-working spaces, and health-conscious cafes.
 
 Canggu's food scene is legendary, with countless cafes serving everything from traditional Indonesian dishes to innovative plant-based cuisine. The area comes alive at night with beach bars, live music venues, and a thriving social scene.`,
-    image: 'https://images.unsplash.com/photo-1539609415589-f9542e1e9837?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://images.unsplash.com/photo-1546484458-6904289cd4f0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071',
     gallery: [
-      'https://images.unsplash.com/photo-1539609415589-f9542e1e9837?w=1200&h=800&fit=crop&crop=entropy',
-      'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=800&fit=crop&crop=entropy',
+      'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200&h=800&fit=crop&crop=entropy',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1543118397-9ebd69a06974?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=entropy',
     ],
@@ -213,7 +213,7 @@ Canggu's food scene is legendary, with countless cafes serving everything from t
 The pre-dawn trek to the summit is a challenging but rewarding experience, with guides leading visitors through volcanic rock landscapes as the sky gradually brightens. From the top, you'll witness a breathtaking 360-degree panoramic view of the caldera, Lake Batur, and neighboring Mount Abang.
 
 The area around the volcano offers natural hot springs where trekkers can soothe their muscles after the climb. The nearby Lake Batur, Bali's largest lake, provides additional recreational opportunities and stunning photography opportunities.`,
-    image: 'https://images.unsplash.com/photo-1552084117-56a987666449?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://images.unsplash.com/photo-1518730573647-359c73385dc5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2232',
     gallery: [
       'https://images.unsplash.com/photo-1552084117-56a987666449?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1540331547398-222e4061ede4?w=1200&h=800&fit=crop&crop=entropy',
@@ -264,7 +264,7 @@ The area around the volcano offers natural hot springs where trekkers can soothe
 Nusa Penida is the largest and most rugged, home to the iconic Kelingking Beach (often called "T-Rex" beach) and Angel's Billabong natural pool. Nusa Lembongan offers more developed infrastructure with stunning beaches, world-class surf breaks, and a laid-back vibe. Nusa Ceningan, the smallest island, features the famous Yellow Bridge and breathtaking cliff jumping spots.
 
 The islands are renowned for their crystal-clear waters, vibrant coral reefs, and abundant marine life, including manta rays and mola mola (ocean sunfish) during certain seasons.`,
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=entropy',
+    image: 'https://images.unsplash.com/photo-1518731616603-4592e1212a4a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1674',
     gallery: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=entropy',
       'https://images.unsplash.com/photo-1584937679922-a5e892c8d527?w=1200&h=800&fit=crop&crop=entropy',
@@ -301,7 +301,7 @@ The islands are renowned for their crystal-clear waters, vibrant coral reefs, an
         lng: 115.5099,
       },
     },
-    tours: ['nusa-islands-adventure'],
+    tours: ['instagram-bali-tour'],
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: '2024-01-01T00:00:00Z',
   },

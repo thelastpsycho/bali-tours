@@ -5,6 +5,7 @@ import { tours } from '@/data/tours'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import ReviewSection from '@/components/shared/ReviewSection'
+import BookingWidget from '@/components/BookingWidget'
 import { formatCurrency } from '@/lib/utils'
 import Script from 'next/script'
 import { generateTourStructuredData, generateBreadcrumbStructuredData } from '@/lib/structured-data'
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: TourDetailPageProps) {
   }
 
   return {
+    metadataBase: new URL('https://balitourstransportation.com'),
     title: `${tour.name} | Bali Tours Transportation`,
     description: tour.metaDescription,
     keywords: tour.keywords,
@@ -231,11 +233,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* Booking Widget */}
-            {/* <BookingWidget tour={tour} /> */}
-            <div className="bg-white rounded-2xl p-6">
-              <h2 className="text-2xl font-display font-semibold mb-4">Book This Tour</h2>
-              <p className="text-tours-neutral-700">Booking widget will be available soon.</p>
-            </div>
+            <BookingWidget tour={tour} />
           </div>
         </div>
       </div>
