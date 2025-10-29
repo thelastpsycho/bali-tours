@@ -104,7 +104,7 @@ export default function RootLayout({
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
               alt="Bali landscape"
               fill
               className="object-cover opacity-20"
@@ -196,7 +196,7 @@ export default function RootLayout({
                   <Mail className="h-5 w-5" />
                 </a>
               </div>
-              <p className="text-neutral-400 mt-4 text-sm">© 2024 Bali Tours Transportation. All rights reserved.</p>
+              <p className="text-neutral-400 mt-4 text-sm">© 2025 Bali Tours Transportation. All rights reserved.</p>
             </div>
           </div>
         </footer>

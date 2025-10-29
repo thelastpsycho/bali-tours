@@ -11,7 +11,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop")'
+            backgroundImage: 'url("https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470")'
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70"></div>
@@ -113,7 +113,7 @@ export default function Home() {
             <Link href="/tours" className="group">
               <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
                 <img
-                  src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2070&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
                   alt="Tanah Lot Temple"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />

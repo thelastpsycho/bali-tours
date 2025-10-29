@@ -27,7 +27,7 @@ export default function FleetPage() {
       <section className="relative bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1580273916550-e4bd684aee8e?w=1920&h=800&fit=crop&crop=entropy"
+            src="https://plus.unsplash.com/premium_photo-1674500522724-3d2a371d4c1f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1375"
             alt="Vehicle Fleet"
             fill
             className="object-cover opacity-30"

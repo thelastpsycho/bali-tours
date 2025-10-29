@@ -89,7 +89,7 @@ ${data.message}`
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 text-white">
               Contact Us
             </h1>
             <p className="text-xl text-tours-neutral-200 max-w-3xl mx-auto">
