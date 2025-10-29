@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import StickyHeader from "@/components/layout/StickyHeader";
+import FloatingWhatsApp from "@/components/shared/FloatingWhatsApp";
 import {
   generateOrganizationStructuredData,
   generateWebsiteStructuredData,
@@ -90,6 +91,9 @@ export default function RootLayout({
         <StickyHeader />
 
         <main className="pt-20">{children}</main>
+
+        {/* Floating WhatsApp Button */}
+        <FloatingWhatsApp />
 
         {/* Footer */}
         <footer className="relative bg-slate-900 text-white py-8">

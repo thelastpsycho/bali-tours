@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Home, MapPin, Car, Users, Info, Calendar, Phone } from 'lucide-react'
 
 export default function StickyHeader() {
   const pathname = usePathname()
@@ -20,13 +20,13 @@ export default function StickyHeader() {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/tours', label: 'Tours' },
-    { href: '/destinations', label: 'Destinations' },
-    { href: '/fleet', label: 'Fleet' },
-    { href: '/about', label: 'About' },
-    { href: '/booking', label: 'Book Now' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: 'Home', icon: Home },
+    { href: '/tours', label: 'Tours', icon: MapPin },
+    { href: '/destinations', label: 'Destinations', icon: MapPin },
+    { href: '/fleet', label: 'Fleet', icon: Car },
+    { href: '/about', label: 'About', icon: Users },
+    { href: '/booking', label: 'Book Now', icon: Calendar },
+    { href: '/contact', label: 'Contact', icon: Phone },
   ]
 
   const isActive = (href: string) => {
@@ -78,18 +78,19 @@ export default function StickyHeader() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`transition-colors font-medium ${
+                className={`transition-colors flex flex-col items-center gap-1 px-2 py-2 ${
                   isActive(item.href)
-                    ? 'text-tours-primary-700 border-b-2 border-tours-primary-700 pb-1'
+                    ? 'text-tours-primary-700 border-b-2 border-tours-primary-700'
                     : 'text-slate-800 hover:text-slate-900'
                 }`}
               >
-                {item.label}
+                <item.icon className="w-5 h-5" />
+                <span className="text-xs font-medium">{item.label}</span>
               </Link>
             ))}
           </nav>
@@ -105,23 +106,26 @@ export default function StickyHeader() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-md border-b border-neutral-200 shadow-lg">
-              <nav className="px-4 py-4 space-y-3">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      isActive(item.href)
-                        ? 'bg-tours-primary-50 text-tours-primary-700'
-                        : 'text-slate-800 hover:bg-neutral-100 hover:text-slate-900'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
+            <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-neutral-200 shadow-xl">
+              <div className="bg-gradient-to-b from-white to-gray-50">
+                <nav className="px-4 py-6 space-y-2">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-4 px-4 py-4 rounded-xl text-base font-medium transition-all duration-200 ${
+                        isActive(item.href)
+                          ? 'bg-tours-primary-600 text-white shadow-md transform scale-[1.02]'
+                          : 'text-slate-800 hover:bg-tours-primary-50 hover:text-tours-primary-700 hover:shadow-md'
+                      }`}
+                    >
+                      <item.icon className="w-5 h-5 flex-shrink-0" />
+                      <span className="font-semibold">{item.label}</span>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
             </div>
           )}
         </div>
