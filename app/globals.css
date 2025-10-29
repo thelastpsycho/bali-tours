@@ -1,26 +1,72 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  /* Bali Tours Color Theme */
+  --tours-primary-50: #fefce8;
+  --tours-primary-100: #fef9c3;
+  --tours-primary-200: #fef08a;
+  --tours-primary-300: #fde047;
+  --tours-primary-400: #facc15;
+  --tours-primary-500: #eab308;
+  --tours-primary-600: #ca8a04;
+  --tours-primary-700: #a16207;
+  --tours-primary-800: #854d0e;
+  --tours-primary-900: #713f12;
+  --tours-primary-950: #422006;
+
+  --tours-accent-50: #eff6ff;
+  --tours-accent-100: #dbeafe;
+  --tours-accent-200: #bfdbfe;
+  --tours-accent-300: #93c5fd;
+  --tours-accent-400: #60a5fa;
+  --tours-accent-500: #3b82f6;
+  --tours-accent-600: #2563eb;
+  --tours-accent-700: #1d4ed8;
+  --tours-accent-800: #1e40af;
+  --tours-accent-900: #1e3a8a;
+  --tours-accent-950: #172554;
+
+  --tours-neutral-50: #fafafa;
+  --tours-neutral-100: #f4f4f5;
+  --tours-neutral-200: #e5e5e7;
+  --tours-neutral-300: #d4d4d8;
+  --tours-neutral-400: #a1a1aa;
+  --tours-neutral-500: #71717a;
+  --tours-neutral-600: #52525b;
+  --tours-neutral-700: #3f3f46;
+  --tours-neutral-800: #27272a;
+  --tours-neutral-900: #18181b;
+  --tours-neutral-950: #09090b;
+
+  /* Default theme variables */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: #f1f5f9;
+  --accent: #facc15;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    @apply bg-white text-slate-900 font-sans antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold text-slate-900;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+  }
 }

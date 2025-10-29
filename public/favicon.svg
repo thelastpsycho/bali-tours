@@ -1,0 +1,23 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for better visibility -->
+  <rect width="32" height="32" fill="#0f172a" rx="6"/>
+
+  <!-- Simplified temple/mountain icon -->
+  <g transform="translate(16, 16)">
+    <!-- Back mountain -->
+    <path d="M -8 8 L -2 -4 L 4 8 Z" fill="#475569"/>
+
+    <!-- Middle mountain -->
+    <path d="M -4 8 L 0 -2 L 4 8 Z" fill="#64748b"/>
+
+    <!-- Front mountain -->
+    <path d="M -2 8 L 2 0 L 6 8 Z" fill="#94a3b8"/>
+
+    <!-- Temple spire -->
+    <circle cx="2" cy="-1" r="1" fill="#eab308"/>
+    <line x1="2" y1="-1" x2="2" y2="-4" stroke="#eab308" strokeWidth="0.8" strokeLinecap="round"/>
+
+    <!-- Sun accent -->
+    <circle cx="-4" cy="-3" r="1.5" fill="none" stroke="#eab308" strokeWidth="0.8"/>
+  </g>
+</svg>

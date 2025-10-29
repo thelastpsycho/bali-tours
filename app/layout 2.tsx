@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import StickyHeader from "@/components/layout/StickyHeader";
 import {
   generateOrganizationStructuredData,
   generateWebsiteStructuredData,
@@ -26,14 +25,6 @@ export const metadata: Metadata = {
   title: "Bali Tours Transportation | Private Driver & Tour Packages",
   description: "Discover Bali with our professional private drivers and curated tour packages. Half-day and full-day tours to Ubud, Uluwatu, and hidden gems. Book your perfect Bali adventure.",
   keywords: ["bali tours", "bali private driver", "bali tour packages", "bali transportation", "ubud tour", "uluwatu tour", "bali day tours"],
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon.svg', type: 'image/svg+xml', sizes: '192x192' },
-    ],
-    shortcut: '/favicon.svg',
-    apple: '/icon.svg',
-  },
   openGraph: {
     title: "Bali Tours Transportation | Private Driver & Tour Packages",
     description: "Professional private tour services in Bali with experienced drivers. Customizable itineraries and competitive prices.",
@@ -87,9 +78,23 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
-        <StickyHeader />
+        {/* Sticky Header */}
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-neutral-200 shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-4">
+              <div className="text-2xl font-display font-semibold text-slate-900">
+                Bali Tours
+              </div>
+              <nav className="hidden md:flex space-x-8">
+                <a href="/" className="text-neutral-700 hover:text-slate-900 transition-colors font-medium">Home</a>
+                <a href="/tours" className="text-neutral-700 hover:text-slate-900 transition-colors font-medium">Tours</a>
+                <a href="/contact" className="text-neutral-700 hover:text-slate-900 transition-colors font-medium">Contact</a>
+              </nav>
+            </div>
+          </div>
+        </header>
 
-        <main className="pt-20">{children}</main>
+        <main>{children}</main>
 
         {/* Footer */}
         <footer className="relative bg-slate-900 text-white py-8">
@@ -105,38 +110,6 @@ export default function RootLayout({
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" className="h-12 w-auto">
-                  {/* Minimalist temple/mountain icon */}
-                  <g id="icon">
-                    {/* Base mountain */}
-                    <path d="M 20 40 L 30 20 L 40 40 Z" fill="#f8fafc" opacity="0.9"/>
-
-                    {/* Middle mountain */}
-                    <path d="M 28 40 L 35 25 L 42 40 Z" fill="#f1f5f9" opacity="0.8"/>
-
-                    {/* Front mountain with temple peak */}
-                    <path d="M 35 40 L 40 28 L 45 40 Z" fill="#e2e8f0"/>
-
-                    {/* Small temple spire on top */}
-                    <circle cx="40" cy="26" r="1.5" fill="#eab308"/>
-                    <path d="M 40 26 L 40 22" stroke="#eab308" strokeWidth="1" strokeLinecap="round"/>
-
-                    {/* Sun/circle accent */}
-                    <circle cx="25" cy="22" r="3" fill="none" stroke="#eab308" strokeWidth="1.5" opacity="0.7"/>
-                  </g>
-
-                  {/* Text: BALI */}
-                  <text x="55" y="35" fontFamily="serif" fontSize="24" fontWeight="600" fill="#f8fafc" letterSpacing="1">
-                    BALI
-                  </text>
-
-                  {/* Text: TOURS */}
-                  <text x="55" y="48" fontFamily="sans-serif" fontSize="11" fontWeight="400" fill="#cbd5e1" letterSpacing="3">
-                    TOURS
-                  </text>
-                </svg>
-              </div>
               <h3 className="text-xl font-display font-semibold mb-2">Bali Tours Transportation</h3>
               <p className="text-neutral-300">Professional private tour services in Bali</p>
               <div className="flex justify-center space-x-6 mt-4">
