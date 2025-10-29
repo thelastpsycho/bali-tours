@@ -22,6 +22,10 @@ export default function StickyHeader() {
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/tours', label: 'Tours' },
+    { href: '/destinations', label: 'Destinations' },
+    { href: '/fleet', label: 'Fleet' },
+    { href: '/about', label: 'About' },
+    { href: '/booking', label: 'Book Now' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -62,12 +66,12 @@ export default function StickyHeader() {
               </g>
 
               {/* Text: BALI */}
-              <text x="55" y="35" fontFamily="serif" fontSize="24" fontWeight="600" fill="#0f172a" letterSpacing="1">
+              <text x="55" y="35" fontFamily="serif" fontSize="24" fontWeight="600" fill="#1a1a1a" letterSpacing="1">
                 BALI
               </text>
 
               {/* Text: TOURS */}
-              <text x="55" y="48" fontFamily="sans-serif" fontSize="11" fontWeight="400" fill="#64748b" letterSpacing="3">
+              <text x="55" y="48" fontFamily="sans-serif" fontSize="11" fontWeight="500" fill="#e11d48" letterSpacing="3">
                 TOURS
               </text>
             </svg>
@@ -81,8 +85,8 @@ export default function StickyHeader() {
                 href={item.href}
                 className={`transition-colors font-medium ${
                   isActive(item.href)
-                    ? 'text-tours-primary-600 border-b-2 border-tours-primary-600 pb-1'
-                    : 'text-neutral-700 hover:text-slate-900'
+                    ? 'text-tours-primary-700 border-b-2 border-tours-primary-700 pb-1'
+                    : 'text-slate-800 hover:text-slate-900'
                 }`}
               >
                 {item.label}
@@ -110,8 +114,8 @@ export default function StickyHeader() {
                     onClick={() => setIsMenuOpen(false)}
                     className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       isActive(item.href)
-                        ? 'bg-tours-primary-50 text-tours-primary-600'
-                        : 'text-neutral-700 hover:bg-neutral-100 hover:text-slate-900'
+                        ? 'bg-tours-primary-50 text-tours-primary-700'
+                        : 'text-slate-800 hover:bg-neutral-100 hover:text-slate-900'
                     }`}
                   >
                     {item.label}

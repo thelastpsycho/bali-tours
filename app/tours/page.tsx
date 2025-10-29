@@ -254,7 +254,7 @@ export default function ToursPage() {
                 </div>
               ) : (
                 filteredTours
-                  .sort((a, b) => a.popularRank - b.popularRank)
+                  .sort((a, b) => (a.popularRank || 999) - (b.popularRank || 999))
                   .map((tour) => (
                     <TourCard key={tour.id} tour={tour} variant="featured" />
                   ))

@@ -99,3 +99,7 @@ export const vehicles: Vehicle[] = [
     priceMultiplier: 2.5
   }
 ]
+
+export function getAllVehicles() {
+  return vehicles
+}

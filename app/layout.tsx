@@ -141,6 +141,9 @@ export default function RootLayout({
               <p className="text-neutral-300">Professional private tour services in Bali</p>
               <div className="flex justify-center space-x-6 mt-4">
                 <a href="/tours" className="text-neutral-300 hover:text-white transition-colors">Tours</a>
+                <a href="/destinations" className="text-neutral-300 hover:text-white transition-colors">Destinations</a>
+                <a href="/fleet" className="text-neutral-300 hover:text-white transition-colors">Fleet</a>
+                <a href="/about" className="text-neutral-300 hover:text-white transition-colors">About</a>
                 <a href="/contact" className="text-neutral-300 hover:text-white transition-colors">Contact</a>
                 <a href="tel:+6281234567890" className="text-neutral-300 hover:text-white transition-colors">Call Us</a>
               </div>

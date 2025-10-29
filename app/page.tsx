@@ -14,21 +14,21 @@ export default function Home() {
             backgroundImage: 'url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop")'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70"></div>
         </div>
 
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 drop-shadow-2xl">
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] text-white">
             Discover the Magic of Bali
           </h1>
-          <p className="text-xl md:text-3xl mb-8 text-white/95 drop-shadow-xl font-light">
+          <p className="text-xl md:text-3xl mb-8 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-light">
             Professional Private Driver & Curated Tour Packages
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button as={Link} href="/tours" variant="accent" size="lg" className="shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+            <Button as={Link} href="/tours" variant="accent" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30">
               Explore Our Tours
             </Button>
-            <Button as={Link} href="/contact" variant="secondary" size="lg" className="shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+            <Button as={Link} href="/contact" variant="secondary" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30 bg-white/10 backdrop-blur-sm">
               Get in Touch
             </Button>
           </div>

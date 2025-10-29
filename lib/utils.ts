@@ -53,3 +53,9 @@ export function generateWhatsAppLink(params: {
 
   return `${baseUrl}?text=${encodeURIComponent(message)}`
 }
+
+export function generateWhatsAppLinkWithMessage(message: string) {
+  const phoneNumber = '62XXXXXXXXX' // Replace with actual number
+  const baseUrl = `https://wa.me/${phoneNumber}`
+  return `${baseUrl}?text=${encodeURIComponent(message)}`
+}

@@ -588,3 +588,11 @@ export const tours: Tour[] = [
     suitableFor: ['families', 'couples', 'solo', 'groups']
   }
 ]
+
+export function getTourBySlug(slug: string) {
+  return tours.find(tour => tour.slug === slug)
+}
+
+export function getAllTours() {
+  return tours
+}

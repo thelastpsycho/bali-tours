@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { forwardRef } from 'react'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'accent'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'accent' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   as?: React.ElementType
   href?: string
@@ -30,6 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       secondary: 'bg-white text-slate-900 border border-neutral-300 hover:border-slate-900 hover:shadow-elegant',
       ghost: 'text-slate-900 hover:bg-neutral-100',
       accent: 'bg-amber-500 text-slate-950 hover:bg-amber-400 hover:shadow-elegant-lg font-semibold',
+      outline: 'bg-transparent text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white',
     }
 
     const sizeStyles = {

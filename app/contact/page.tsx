@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
-import { generateWhatsAppLink } from '@/lib/utils'
+import { generateWhatsAppLink, generateWhatsAppLinkWithMessage } from '@/lib/utils'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -53,9 +53,7 @@ Participants: ${data.participants || 'Not specified'}
 Message:
 ${data.message}`
 
-      const whatsappLink = generateWhatsAppLink({
-        message: whatsappMessage,
-      })
+      const whatsappLink = generateWhatsAppLinkWithMessage(whatsappMessage)
 
       // Open WhatsApp in new tab
       window.open(whatsappLink, '_blank')
@@ -323,7 +321,7 @@ ${data.message}`
                     placeholder="Tell us about your travel plans, preferences, or any questions you have..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
                   )}
                 </div>
 

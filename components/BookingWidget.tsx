@@ -46,13 +46,13 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
   ]
 
   const whatsappLink = generateWhatsAppLink({
-    tour: tour.name,
-    vehicle: vehicleOptions.find(v => v.key === selectedVehicle)?.label || '',
-    participants: participants.toString(),
+    tourName: tour.name,
+    vehicleType: vehicleOptions.find(v => v.key === selectedVehicle)?.label || '',
+    passengers: participants,
     date: new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
   })
 
-  const totalPrice = tour.pricing[selectedVehicle]
+  const totalPrice = tour.pricing[selectedVehicle] || 0
 
   return (
     <div className="bg-white rounded-2xl p-6 sticky top-8">
@@ -88,7 +88,7 @@ export default function BookingWidget({ tour }: BookingWidgetProps) {
                   </div>
                 </div>
                 <p className="font-bold text-tours-primary-900">
-                  {formatCurrency(tour.pricing[vehicle.key as keyof typeof tour.pricing])}
+                  {formatCurrency(tour.pricing[vehicle.key as keyof typeof tour.pricing] || 0)}
                 </p>
               </div>
             </label>

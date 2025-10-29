@@ -1,4 +1,5 @@
 import { tours } from './data/tours'
+import { getAllDestinations } from './data/destinations'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,6 +20,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/destinations`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/fleet`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/booking`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
@@ -34,31 +59,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  // Blog pages (placeholder for future blog)
-  const blogPages = [
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-  ]
-
-  // About page (placeholder for future about page)
-  const aboutPage = {
-    url: `${baseUrl}/about`,
+  // Destination pages
+  const destinations = getAllDestinations()
+  const destinationPages = destinations.map((destination) => ({
+    url: `${baseUrl}/destinations/${destination.slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
 
-  // FAQ page (placeholder for future FAQ page)
-  const faqPage = {
-    url: `${baseUrl}/faq`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.5,
-  }
-
-  return [...staticPages, ...tourPages, ...blogPages, aboutPage, faqPage]
+  return [...staticPages, ...tourPages, ...destinationPages]
 }

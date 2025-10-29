@@ -1,10 +1,10 @@
-import { notFound, metadata } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { Star, Clock, Users, MapPin, Check, X, Phone } from 'lucide-react'
 import { tours } from '@/data/tours'
 import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
-// import BookingWidget from '@/components/BookingWidget'
+import ReviewSection from '@/components/shared/ReviewSection'
 import { formatCurrency } from '@/lib/utils'
 import Script from 'next/script'
 import { generateTourStructuredData, generateBreadcrumbStructuredData } from '@/lib/structured-data'
@@ -220,6 +220,11 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
                   ))}
                 </ul>
               </div>
+            </div>
+
+            {/* Reviews Section */}
+            <div>
+              <ReviewSection tourId={tour.id} tourSlug={slug} />
             </div>
           </div>
 

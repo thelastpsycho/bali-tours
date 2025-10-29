@@ -44,8 +44,8 @@ export default function TourCard({ tour, variant = 'standard' }: TourCardProps) 
             <div className="flex items-start justify-between mb-3">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <Badge variant={tour.popularRank <= 3 ? 'accent' : 'primary'}>
-                    #{tour.popularRank} Most Popular
+                  <Badge variant={(tour.popularRank || 999) <= 3 ? 'accent' : 'primary'}>
+                    #{tour.popularRank || 999} Most Popular
                   </Badge>
                   <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(tour.difficulty)}`}>
                     {tour.difficulty.charAt(0).toUpperCase() + tour.difficulty.slice(1)}
@@ -118,8 +118,8 @@ export default function TourCard({ tour, variant = 'standard' }: TourCardProps) 
 
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
-          <Badge variant={tour.popularRank <= 3 ? 'accent' : 'primary'}>
-            #{tour.popularRank} Most Popular
+          <Badge variant={(tour.popularRank || 999) <= 3 ? 'accent' : 'primary'}>
+            #{tour.popularRank || 999} Most Popular
           </Badge>
           <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(tour.difficulty)}`}>
             {tour.difficulty.charAt(0).toUpperCase() + tour.difficulty.slice(1)}
