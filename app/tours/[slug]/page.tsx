@@ -6,6 +6,7 @@ import Button from '@/components/shared/Button'
 import Badge from '@/components/shared/Badge'
 import ReviewSection from '@/components/shared/ReviewSection'
 import BookingWidget from '@/components/BookingWidget'
+import { TourMap } from '@/components/maps/TourMap'
 import { formatCurrency } from '@/lib/utils'
 import Script from 'next/script'
 import { generateTourStructuredData, generateBreadcrumbStructuredData } from '@/lib/structured-data'
@@ -170,6 +171,9 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
                 ))}
               </ul>
             </div>
+
+            {/* Interactive Tour Map */}
+            <TourMap tour={tour} height="600px" showRoute={true} showStops={true} />
 
             {/* Itinerary */}
             <div className="bg-white rounded-2xl p-8">

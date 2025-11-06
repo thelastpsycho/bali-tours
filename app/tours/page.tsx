@@ -100,169 +100,118 @@ export default function ToursPage() {
     })
   }
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'easy': return 'text-green-600 bg-green-50'
-      case 'moderate': return 'text-yellow-600 bg-yellow-50'
-      case 'challenging': return 'text-red-600 bg-red-50'
-      default: return 'text-gray-600 bg-gray-50'
-    }
-  }
-
   return (
-    <div className="min-h-screen bg-tours-neutral-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-tours-primary-950 to-tours-primary-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Explore Our Bali Tours
-            </h1>
-            <p className="text-xl text-tours-neutral-200 max-w-3xl mx-auto">
-              Discover Bali's hidden gems with our carefully crafted private tours. From cultural temples to natural wonders, we have the perfect adventure for you.
-            </p>
-          </div>
+    <div className="min-h-screen bg-white">
+      {/* Compact Hero */}
+      <section className="py-12 lg:py-16 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            Bali Tours
+          </h1>
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Private guided tours exploring Bali's culture, nature, and hidden gems.
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Search Bar */}
-        <div className="mb-8">
-          <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-tours-neutral-400" />
+      {/* Search Bar */}
+      <section className="pb-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
             <Input
               type="text"
-              placeholder="Search tours by name or description..."
+              placeholder="Search tours..."
               value={filters.search}
               onChange={(e) => updateFilter('search', e.target.value)}
-              className="pl-12 h-14 text-lg border-tours-neutral-300 focus:border-tours-primary-900"
+              className="pl-12 h-12 text-base border-slate-200 focus:border-emerald-500 bg-white"
             />
           </div>
         </div>
+      </section>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters Sidebar */}
-          <div className="lg:w-80">
-            {/* Mobile Filter Toggle */}
-            <div className="lg:hidden mb-4">
-              <Button
-                onClick={() => setShowMobileFilters(!showMobileFilters)}
-                variant="secondary"
-                className="w-full"
-              >
-                <Filter className="w-4 h-4 mr-2" />
-                {showMobileFilters ? 'Hide Filters' : 'Show Filters'}
-              </Button>
-            </div>
-
-            {/* Filters */}
-            <div className={`${showMobileFilters ? 'block' : 'hidden'} lg:block bg-white rounded-2xl p-6 border border-tours-neutral-200`}>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-display font-semibold">Filters</h2>
-                <Button
-                  onClick={clearFilters}
-                  variant="ghost"
-                  size="sm"
-                  className="text-tours-primary-900 hover:bg-tours-primary-50"
+      {/* Filter Pills */}
+      <section className="pb-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {/* Duration Filters */}
+            <div className="flex gap-2">
+              {durations.map((duration) => (
+                <button
+                  key={duration.value}
+                  onClick={() => updateFilter('duration', duration.value)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    filters.duration === duration.value
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
                 >
-                  Clear All
-                </Button>
-              </div>
-
-              {/* Duration Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium mb-3">Duration</h3>
-                <div className="space-y-2">
-                  {durations.map((duration) => (
-                    <label key={duration.value} className="flex items-center cursor-pointer">
-                      <input
-                        type="radio"
-                        name="duration"
-                        value={duration.value}
-                        checked={filters.duration === duration.value}
-                        onChange={(e) => updateFilter('duration', e.target.value)}
-                        className="w-4 h-4 text-tours-primary-900 border-tours-neutral-300 focus:ring-tours-primary-900"
-                      />
-                      <span className="ml-3 text-sm">{duration.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Category Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium mb-3">Category</h3>
-                <div className="space-y-2">
-                  {categories.map((category) => (
-                    <label key={category.value} className="flex items-center cursor-pointer">
-                      <input
-                        type="radio"
-                        name="category"
-                        value={category.value}
-                        checked={filters.category === category.value}
-                        onChange={(e) => updateFilter('category', e.target.value)}
-                        className="w-4 h-4 text-tours-primary-900 border-tours-neutral-300 focus:ring-tours-primary-900"
-                      />
-                      <span className="ml-3 text-sm">{category.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Difficulty Filter */}
-              <div className="mb-6">
-                <h3 className="font-medium mb-3">Difficulty</h3>
-                <div className="space-y-2">
-                  {difficulties.map((difficulty) => (
-                    <label key={difficulty.value} className="flex items-center cursor-pointer">
-                      <input
-                        type="radio"
-                        name="difficulty"
-                        value={difficulty.value}
-                        checked={filters.difficulty === difficulty.value}
-                        onChange={(e) => updateFilter('difficulty', e.target.value)}
-                        className="w-4 h-4 text-tours-primary-900 border-tours-neutral-300 focus:ring-tours-primary-900"
-                      />
-                      <span className="ml-3 text-sm">{difficulty.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
+                  {duration.label}
+                </button>
+              ))}
             </div>
+
+            {/* Category Filters - Top 5 */}
+            <div className="flex gap-2">
+              {categories.slice(1, 6).map((category) => (
+                <button
+                  key={category.value}
+                  onClick={() => updateFilter('category', filters.category === category.value ? 'all' : category.value)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    filters.category === category.value
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Clear Filters */}
+          {(filters.search || filters.duration !== 'all' || filters.category !== 'all' || filters.difficulty !== 'all') && (
+            <div className="text-center mt-4">
+              <button
+                onClick={clearFilters}
+                className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Tours Grid */}
+      <section className="pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Results Count */}
+          <div className="text-center mb-8">
+            <p className="text-slate-600">
+              {filteredTours.length === 0 ? 'No tours found' : `${filteredTours.length} tours available`}
+            </p>
           </div>
 
           {/* Tours Grid */}
-          <div className="flex-1">
-            {/* Results Header */}
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <p className="text-tours-neutral-700">
-                  Showing <span className="font-medium">{filteredTours.length}</span> of{' '}
-                  <span className="font-medium">{tours.length}</span> tours
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredTours.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-slate-600 mb-4">Try adjusting your filters to see more tours.</p>
+                <Button onClick={clearFilters} variant="secondary">
+                  Clear Filters
+                </Button>
               </div>
-            </div>
-
-            {/* Tours List */}
-            <div className="grid gap-6">
-              {filteredTours.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-lg text-tours-neutral-600 mb-4">No tours found matching your criteria.</p>
-                  <Button onClick={clearFilters} variant="primary">
-                    Clear Filters
-                  </Button>
-                </div>
-              ) : (
-                filteredTours
-                  .sort((a, b) => (a.popularRank || 999) - (b.popularRank || 999))
-                  .map((tour) => (
-                    <TourCard key={tour.id} tour={tour} variant="featured" />
-                  ))
-              )}
-            </div>
+            ) : (
+              filteredTours
+                .sort((a, b) => (a.popularRank || 999) - (b.popularRank || 999))
+                .map((tour) => (
+                  <TourCard key={tour.id} tour={tour} variant="compact" />
+                ))
+            )}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

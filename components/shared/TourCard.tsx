@@ -8,7 +8,7 @@ import { formatCurrency } from '@/lib/utils'
 
 interface TourCardProps {
   tour: Tour
-  variant?: 'standard' | 'featured'
+  variant?: 'standard' | 'featured' | 'compact'
 }
 
 export default function TourCard({ tour, variant = 'standard' }: TourCardProps) {
@@ -16,10 +16,10 @@ export default function TourCard({ tour, variant = 'standard' }: TourCardProps) 
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy': return 'text-green-600 bg-green-50'
-      case 'moderate': return 'text-yellow-600 bg-yellow-50'
-      case 'challenging': return 'text-red-600 bg-red-50'
-      default: return 'text-gray-600 bg-gray-50'
+      case 'easy': return 'text-emerald-700 bg-emerald-50'
+      case 'moderate': return 'text-amber-700 bg-amber-50'
+      case 'challenging': return 'text-rose-700 bg-rose-50'
+      default: return 'text-slate-700 bg-slate-50'
     }
   }
 
@@ -101,6 +101,98 @@ export default function TourCard({ tour, variant = 'standard' }: TourCardProps) 
           </div>
         </div>
       </Card>
+    )
+  }
+
+  if (variant === 'compact') {
+    return (
+      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+        {/* Tour Image */}
+        <div className="aspect-video relative overflow-hidden">
+          <img
+            src={tour.images.main}
+            alt={tour.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+
+          {/* Overlays */}
+          <div className="absolute top-3 left-3">
+            {(tour.popularRank || 999) <= 3 && (
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-600 text-white">
+                #{tour.popularRank} Popular
+              </span>
+            )}
+          </div>
+
+          <div className="absolute top-3 right-3">
+            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(tour.difficulty)}`}>
+              {tour.difficulty.charAt(0).toUpperCase() + tour.difficulty.slice(1)}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-5">
+          {/* Title */}
+          <h3 className="text-lg font-semibold text-slate-900 mb-2 line-clamp-1">
+            {tour.name}
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
+            {tour.shortDescription}
+          </p>
+
+          {/* Details */}
+          <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
+            <div className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              <span>{tour.durationHours}h</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Users className="w-3 h-3" />
+              <span>{tour.maxParticipants} max</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Star className="w-3 h-3 text-amber-500" />
+              <span>{tour.rating}</span>
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div className="flex flex-wrap gap-1 mb-4">
+            {tour.category.slice(0, 2).map((cat) => (
+              <span key={cat} className="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </span>
+            ))}
+            {tour.category.length > 2 && (
+              <span className="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">
+                +{tour.category.length - 2}
+              </span>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs text-slate-500">From</p>
+              <p className="text-lg font-bold text-slate-900">
+                {formatCurrency(minPrice)}
+              </p>
+            </div>
+            <Button
+              as={Link}
+              href={`/tours/${tour.slug}`}
+              variant="primary"
+              size="sm"
+              className="px-4"
+            >
+              View Tour
+            </Button>
+          </div>
+        </div>
+      </div>
     )
   }
 

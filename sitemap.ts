@@ -1,5 +1,6 @@
 import { tours } from './data/tours'
 import { getAllDestinations } from './data/destinations'
+import { travelGuides } from './data/travel-guides'
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/destinations`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/guides`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.85,
@@ -68,5 +75,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  return [...staticPages, ...tourPages, ...destinationPages]
+  // Travel guide pages
+  const guidePages = travelGuides.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(guide.updatedAt),
+    changeFrequency: 'weekly' as const,
+    priority: guide.featured ? 0.9 : 0.8,
+  }))
+
+  return [...staticPages, ...tourPages, ...destinationPages, ...guidePages]
 }

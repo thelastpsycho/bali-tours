@@ -8,10 +8,11 @@ import {
   MapPin,
   Phone,
   Mail,
-  CheckCircle,
   Star,
   Shield,
-  Globe
+  Globe,
+  Quote,
+  Sparkles
 } from 'lucide-react'
 
 const teamMembers = [
@@ -98,71 +99,47 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=800&fit=crop&crop=entropy"
-            alt="Bali Landscape"
-            fill
-            className="object-cover opacity-30"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6 text-slate-300">About Bali Tours Transportation</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Your trusted partner for discovering the true beauty of Bali with professional drivers
-              and authentic local experiences since 2009.
-            </p>
-          </div>
+      {/* Compact Hero */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+            About Bali Tours
+          </h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Authentic Bali experiences with local experts since 2009.
+          </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-tours-primary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* Stats - Ultra Compact */}
+      <section className="pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {stats.map((stat, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-center">
-                  <stat.icon className="h-8 w-8 text-tours-primary-600" />
-                </div>
-                <div className="text-3xl font-bold text-tours-primary-600">{stat.value}</div>
-                <div className="text-neutral-600">{stat.label}</div>
+              <div key={index} className="py-4">
+                <div className="text-2xl font-bold text-emerald-600">{stat.value}</div>
+                <div className="text-sm text-slate-600 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Story - Compact */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Story</h2>
-              <div className="space-y-4 text-lg text-neutral-600">
-                <p>
-                  Bali Tours Transportation began in 2009 with a simple mission: to provide visitors with
-                  authentic, safe, and memorable experiences across Bali. What started as a single driver
-                  with a passion for sharing his homeland has grown into a team of professional guides
-                  dedicated to showcasing the best of Bali.
-                </p>
-                <p>
-                  Our founder, Wayan Sudana, recognized that many visitors were missing out on the true
-                  essence of Bali. He wanted to create a service that went beyond transportation – one
-                  that would connect travelers with local culture, hidden gems, and genuine Balinese
-                  hospitality.
-                </p>
-                <p>
-                  Today, we serve thousands of happy customers each year, offering personalized tours
-                  with comfortable vehicles and knowledgeable guides who are passionate about sharing
-                  their love for Bali.
-                </p>
-              </div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">Our Story</h2>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Started in 2009 as one driver's passion to share authentic Bali experiences.
+                Now a team of local experts dedicated to showcasing the island's hidden gems and genuine hospitality.
+              </p>
+              <p className="text-emerald-600 font-medium">
+                Connecting travelers with the soul of Bali
+              </p>
             </div>
-            <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative aspect-video rounded-xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1711609110590-5ad5c4599e56?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071"
                 alt="Bali Temple"
@@ -174,44 +151,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Values</h2>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              These core principles guide everything we do and ensure you receive the best possible experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Values - Minimal */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">Our Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-tours-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <value.icon className="h-6 w-6 text-tours-primary-600" />
+              <div key={index} className="flex items-start gap-4 p-6 rounded-xl bg-slate-50">
+                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <value.icon className="h-5 w-5 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">{value.title}</h3>
-                <p className="text-neutral-600">{value.description}</p>
+                <div>
+                  <h3 className="font-semibold text-slate-900 mb-1">{value.title}</h3>
+                  <p className="text-sm text-slate-600">{value.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Meet the Team */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Our Team</h2>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Our passionate team of local experts is dedicated to making your Bali experience unforgettable.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Team - Compact Grid */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">Your Local Guides</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64">
+              <div key={index} className="text-center">
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-3">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -219,93 +186,28 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h3>
-                  <p className="text-tours-primary-600 font-medium mb-3">{member.role}</p>
-
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center text-neutral-600">
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{member.experience} experience</span>
-                    </div>
-                    <div className="flex items-center text-neutral-600">
-                      <Globe className="h-4 w-4 mr-2" />
-                      <span>{member.languages.join(', ')}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-neutral-600 mt-3 line-clamp-3">{member.bio}</p>
-                </div>
+                <h3 className="font-semibold text-slate-900 text-sm">{member.name}</h3>
+                <p className="text-emerald-600 text-xs">{member.role}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 bg-tours-primary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose Us?</h2>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-tours-primary-600 mr-3 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Local Expertise</h4>
-                    <p className="text-neutral-600">Our drivers are born and raised in Bali, offering authentic local insights.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-tours-primary-600 mr-3 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Flexible Itineraries</h4>
-                    <p className="text-neutral-600">Custom tours tailored to your interests and pace.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-tours-primary-600 mr-3 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900">24/7 Support</h4>
-                    <p className="text-neutral-600">Round-the-clock assistance for all your needs during your stay.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-tours-primary-600 mr-3 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Competitive Pricing</h4>
-                    <p className="text-neutral-600">Fair and transparent pricing with no hidden fees.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Get in Touch</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center text-neutral-600">
-                    <Phone className="h-5 w-5 text-tours-primary-600 mr-3" />
-                    <span>+62 812-3456-7890</span>
-                  </div>
-                  <div className="flex items-center text-neutral-600">
-                    <Mail className="h-5 w-5 text-tours-primary-600 mr-3" />
-                    <span>info@balitourstransportation.com</span>
-                  </div>
-                  <div className="flex items-center text-neutral-600">
-                    <MapPin className="h-5 w-5 text-tours-primary-600 mr-3" />
-                    <span>Ubud, Bali, Indonesia</span>
-                  </div>
-                </div>
-                <div className="mt-6 space-y-3">
-                  <Button variant="primary" className="w-full" as="a" href="/contact">
-                    Contact Us
-                  </Button>
-                  <Button variant="secondary" className="w-full" as="a" href="https://wa.me/6281234567890?text=Hi! I'm interested in learning more about your Bali tours." target="_blank" rel="noopener noreferrer">
-                    WhatsApp
-                  </Button>
-                </div>
-              </div>
-            </div>
+      {/* CTA - Minimal */}
+      <section className="py-16">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Ready to Explore Bali?</h2>
+          <p className="text-slate-600 mb-8">
+            Let our local experts create your perfect Bali experience.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="primary" as="a" href="/booking">
+              Book Your Tour
+            </Button>
+            <Button variant="secondary" as="a" href="/contact">
+              Contact Us
+            </Button>
           </div>
         </div>
       </section>

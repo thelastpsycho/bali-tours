@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X, Home, MapPin, Car, Users, Info, Calendar, Phone } from 'lucide-react'
+import { Menu, X, Home, MapPin, Car, Users, Info, Calendar, Phone, BookOpen } from 'lucide-react'
 
 export default function StickyHeader() {
   const pathname = usePathname()
@@ -23,6 +23,7 @@ export default function StickyHeader() {
     { href: '/', label: 'Home', icon: Home },
     { href: '/tours', label: 'Tours', icon: MapPin },
     { href: '/destinations', label: 'Destinations', icon: MapPin },
+    { href: '/guides', label: 'Travel Guides', icon: BookOpen },
     { href: '/fleet', label: 'Fleet', icon: Car },
     { href: '/about', label: 'About', icon: Users },
     { href: '/booking', label: 'Book Now', icon: Calendar },
@@ -30,6 +31,7 @@ export default function StickyHeader() {
   ]
 
   const isActive = (href: string) => {
+    if (!pathname) return false
     if (href === '/') {
       return pathname === '/'
     }

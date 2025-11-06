@@ -1,149 +1,215 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
+import { tours } from '@/data/tours'
+import { getFeaturedGuides } from '@/data/travel-guides'
 import Button from '@/components/shared/Button'
+import TourCard from '@/components/shared/TourCard'
+import Card from '@/components/shared/Card'
+import Badge from '@/components/shared/Badge'
+import { Star, MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle } from 'lucide-react'
 
 export default function Home() {
+  const featuredTours = tours.slice(0, 3)
+  const featuredGuides = getFeaturedGuides().slice(0, 3)
+
   return (
-    <div className="min-h-screen">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen bg-white">
+      {/* Compact Hero Section */}
+      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470")'
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70"></div>
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&w=1600&h=900&fit=crop"
+            alt="Bali landscape"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] text-white">
-            Discover the Magic of Bali
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+          <div className="mb-6">
+            <Badge variant="primary" className="bg-white/20 backdrop-blur-sm text-white border-white/30">
+              Since 2009
+            </Badge>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-4 text-white">
+            Discover Bali with Local Experts
           </h1>
-          <p className="text-xl md:text-3xl mb-8 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-light">
-            Professional Private Driver & Curated Tour Packages
+          <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto font-light">
+            Professional private drivers and curated tours to explore Bali's hidden gems and cultural treasures
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button as={Link} href="/tours" variant="accent" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30">
-              Explore Our Tours
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button as={Link} href="/tours" variant="primary" size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white border-2 border-white/20">
+              Explore Tours
             </Button>
-            <Button as={Link} href="/contact" variant="secondary" size="lg" className="shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-200 border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white">
-              Get in Touch
+            <Button as={Link} href="/contact" variant="secondary" size="lg" className="bg-white/10 backdrop-blur-sm text-white border-white/20 hover:bg-white/20">
+              <MapPin className="w-4 h-4 mr-2" />
+              Custom Journey
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-tours-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-display font-semibold text-center mb-4">
-            Welcome to Bali Tours
-          </h2>
-          <p className="text-lg text-tours-neutral-600 text-center mb-12 max-w-2xl mx-auto">
-            Experience the magic of Bali with our professional drivers and carefully crafted tour packages
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Quick Features */}
+      <section className="py-12 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-tours-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-tours-primary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Users className="w-6 h-6 text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Professional Drivers</h3>
-              <p className="text-tours-neutral-600">Experienced, English-speaking drivers with extensive local knowledge</p>
+              <h3 className="font-semibold text-slate-900 mb-1">Expert Guides</h3>
+              <p className="text-sm text-slate-600">English-speaking locals</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-tours-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-tours-primary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
+              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Clock className="w-6 h-6 text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Flexible Tours</h3>
-              <p className="text-tours-neutral-600">Customizable itineraries to match your interests and schedule</p>
+              <h3 className="font-semibold text-slate-900 mb-1">Flexible Time</h3>
+              <p className="text-sm text-slate-600">Your schedule matters</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-tours-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-tours-primary-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="w-6 h-6 text-emerald-700" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Safe & Reliable</h3>
-              <p className="text-tours-neutral-600">Well-maintained vehicles with comprehensive insurance coverage</p>
+              <h3 className="font-semibold text-slate-900 mb-1">Verified Service</h3>
+              <p className="text-sm text-slate-600">500+ happy travelers</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-6 h-6 text-emerald-700" />
+              </div>
+              <h3 className="font-semibold text-slate-900 mb-1">All Bali</h3>
+              <p className="text-sm text-slate-600">Complete island coverage</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Destinations */}
+      {/* Featured Tours */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-display font-semibold text-center mb-12">
-            Popular Destinations
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/tours" className="group">
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1887&auto=format&fit=crop"
-                  alt="Ubud Rice Terraces"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-white font-display text-xl font-semibold">
-                  Ubud Cultural Tour
-                </h3>
-              </div>
-              <p className="text-tours-neutral-600">Traditional villages, rice terraces & art markets</p>
-            </Link>
-            <Link href="/tours" className="group">
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2070&auto=format&fit=crop"
-                  alt="Uluwatu Temple"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-white font-display text-xl font-semibold">
-                  Uluwatu Temple Tour
-                </h3>
-              </div>
-              <p className="text-tours-neutral-600">Cliff-top temple & Kecak fire dance</p>
-            </Link>
-            <Link href="/tours" className="group">
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1470"
-                  alt="Tanah Lot Temple"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-white font-display text-xl font-semibold">
-                  Beach & Temple Tour
-                </h3>
-              </div>
-              <p className="text-tours-neutral-600">Coastal temples & pristine beaches</p>
-            </Link>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-slate-900 mb-4">
+              Most Popular Tours
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Handpicked experiences that showcase the best of Bali's culture, nature, and adventure
+            </p>
           </div>
-          <div className="text-center mt-12">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {featuredTours.map((tour) => (
+              <TourCard key={tour.id} tour={tour} variant="compact" />
+            ))}
+          </div>
+
+          <div className="text-center">
             <Button as={Link} href="/tours" variant="primary" size="lg">
               View All Tours
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-display font-semibold mb-4">
-            Ready to Explore Bali?
-          </h2>
-          <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
-            Let us help you create unforgettable memories in the Island of the Gods.
-          </p>
-          <Button as={Link} href="/contact" variant="primary" size="lg">
-            Get Started
-          </Button>
+      {/* Travel Guides */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold text-slate-900 mb-4">
+              Travel Like a Local
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Insider tips and guides to make your Bali experience unforgettable
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {featuredGuides.map((guide) => (
+              <Link key={guide.id} href={`/guides/${guide.id}`} className="group">
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <Image
+                      src={guide.image}
+                      alt={guide.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge variant="secondary">{guide.category}</Badge>
+                      <span className="text-sm text-slate-500">{guide.duration}</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                      {guide.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 line-clamp-2">{guide.subtitle}</p>
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button as={Link} href="/guides" variant="secondary" size="lg">
+              Explore All Guides
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Stats */}
+      <section className="py-12 bg-emerald-600 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold mb-2">15+</div>
+              <div className="text-emerald-100">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold mb-2">2000+</div>
+              <div className="text-emerald-100">Happy Travelers</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold mb-2">50+</div>
+              <div className="text-emerald-100">Tour Options</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold mb-2">4.9/5</div>
+              <div className="text-emerald-100">Average Rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-12 text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-semibold mb-6">
+              Ready for Your Bali Adventure?
+            </h2>
+            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+              Let our local experts create the perfect Bali experience tailored to your interests and schedule.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button as={Link} href="/booking" variant="accent" size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-white">
+                Book Your Journey
+              </Button>
+              <Button as={Link} href="/contact" variant="ghost" size="lg" className="border-white text-white hover:bg-white hover:text-slate-900">
+                <Calendar className="w-4 h-4 mr-2" />
+                Contact First
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
